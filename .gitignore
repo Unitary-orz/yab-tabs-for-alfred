@@ -1,0 +1,12 @@
+.DS_Store
+__pycache__/
+*.py[cod]
+.venv/
+build/
+dist/
+.env
+.env.*
+!*.example
+tabs.json
+tabs.lock
+*.log
