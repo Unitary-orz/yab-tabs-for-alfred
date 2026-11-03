@@ -11,7 +11,7 @@ python3 scripts/build.py
 git diff --check
 ```
 
-Commit the rebuilt `Yab Companion.alfredworkflow` together with its source changes. Builds do not touch your installed Alfred workflows.
+Commit the rebuilt `Yab Tabs for Alfred.alfredworkflow` together with its source changes. Builds do not touch your installed Alfred workflows.
 
 For runtime changes, also import the rebuilt package and check search, Return, URL/title/Markdown copies, and space switching in Alfred. CI's offline checks do not replace those live checks. Use a disposable test tab for live testing.
 

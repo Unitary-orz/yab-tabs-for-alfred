@@ -13,7 +13,7 @@ import zipfile
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "workflow"))
 sys.path.insert(0, str(ROOT / "scripts"))
-import companion as c
+import yab_tabs as c
 import build
 
 
@@ -191,11 +191,11 @@ class PackagingScenarios(unittest.TestCase):
                 self.assertIsNone(package.testzip())
                 self.assertEqual(set(package.namelist()), {
                     "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "VERSION",
-                    "companion.py", "run.sh", "icon.png", "info.plist"})
+                    "yab_tabs.py", "run.sh", "icon.png", "info.plist"})
                 metadata = plistlib.loads(package.read("info.plist"))
                 self.assertEqual(metadata["version"], package.read("VERSION").decode().strip())
                 self.assertEqual(metadata["bundleid"], c.BUNDLE)
-                self.assertEqual(package.read("companion.py"), (ROOT / "workflow/companion.py").read_bytes())
+                self.assertEqual(package.read("yab_tabs.py"), (ROOT / "workflow/yab_tabs.py").read_bytes())
 
     def test_launcher_preserves_unicode_and_shell_metacharacters_as_arguments(self):
         with tempfile.TemporaryDirectory() as directory:

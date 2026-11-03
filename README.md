@@ -1,17 +1,17 @@
 <img src="assets/icon.png" width="80" alt="Yab application icon">
 
-# Yab Companion for Alfred
+# Yab Tabs for Alfred
 
 Search Yab tabs from Alfred, switch to an existing tab or space, and copy a tab's URL, title, or Markdown link.
 
-[中文说明](README.zh-CN.md) · [Download workflow](./Yab%20Companion.alfredworkflow?raw=true)
+[中文说明](README.zh-CN.md) · [Download workflow](./Yab%20Tabs%20for%20Alfred.alfredworkflow?raw=true)
 
 ## Install
 
 1. Install [Alfred 5 with Powerpack](https://www.alfredapp.com/) and [Yab](https://yetanotherbrowser.com/).
 2. In Yab → Settings → Developers, install the `yab` command-line tool. Allow agents in Settings → AI → Agents so the workflow can use Yab's MCP interface.
 3. Have Python 3.9 or later available. The launcher checks common Homebrew and system locations. You can also set `PYTHON3` to your interpreter's full path in the workflow environment variables.
-4. Download **Yab Companion.alfredworkflow** above and double-click it to import into Alfred. If GitHub opens the file page, use **Download raw file**.
+4. Download **Yab Tabs for Alfred.alfredworkflow** above and double-click it to import into Alfred. If GitHub opens the file page, use **Download raw file**.
 
 The workflow has no third-party Python dependencies and does not call an AI model. It uses Yab's local MCP server. Compatibility has been checked with Alfred 5.8.1 and Yab 0.45.2; future Yab interface changes may require an update.
 
@@ -37,7 +37,7 @@ Search matches titles, URLs, folder paths, and space labels. Multiple terms must
 
 Space results appear after tab results. Type a space's name, press Return, then type `yt` again to search its tabs. Modifier-copy actions apply to tab results only. Clipboard actions do not paste automatically.
 
-To open the search with a global shortcut, set the workflow's unassigned **Hotkey** object in Alfred Preferences. External trigger: bundle ID `community.yab-companion.alfred`, trigger ID `list_tabs`.
+To open the search with a global shortcut, set the workflow's unassigned **Hotkey** object in Alfred Preferences. External trigger: bundle ID `community.yab-tabs.alfred`, trigger ID `list_tabs`.
 
 ## Search scope
 
@@ -60,7 +60,7 @@ The default keyword is `yt`; change it in the Script Filter object if it conflic
 
 The workflow reads tab titles, URLs, folder paths, and space names through Yab's public tools. It does not read Yab's database or simulate browser keystrokes.
 
-Results are cached locally with a two-second freshness interval in Alfred's workflow cache directory, or `~/Library/Caches/community.yab-companion.alfred` when run outside Alfred. Cache files are created with owner-only permissions. A cache file can remain on disk after it expires; expiration controls reuse, not automatic deletion. Successful actions clear it. Clipboard copies also enter any clipboard manager you use.
+Results are cached locally with a two-second freshness interval in Alfred's workflow cache directory, or `~/Library/Caches/community.yab-tabs.alfred` when run outside Alfred. Cache files are created with owner-only permissions. A cache file can remain on disk after it expires; expiration controls reuse, not automatic deletion. Successful actions clear it. Clipboard copies also enter any clipboard manager you use.
 
 The workflow itself does not send browsing data to a model or external service. Normal Yab and website network activity is separate. Alfred's debugger can display result titles and URLs; redact those before sharing a log.
 
@@ -84,7 +84,7 @@ sh -n workflow/run.sh
 python3 scripts/build.py
 ```
 
-The build produces `Yab Companion.alfredworkflow` in the repository root. It uses only repository files and the Python standard library; archive metadata is fixed for reproducible builds. CI runs the offline tests and checks that the committed workflow matches the source. CI does not publish anything or exercise the macOS apps.
+The build produces `Yab Tabs for Alfred.alfredworkflow` in the repository root. It uses only repository files and the Python standard library; archive metadata is fixed for reproducible builds. CI runs the offline tests and checks that the committed workflow matches the source. CI does not publish anything or exercise the macOS apps.
 
 Before sharing a changed package, test search, Return, each copy modifier, and a space switch in Alfred. Offline fixtures contain synthetic example data, never exported browser state. See [CONTRIBUTING.md](CONTRIBUTING.md).
 

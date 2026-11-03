@@ -15,7 +15,7 @@ import time
 import unicodedata
 import uuid
 
-BUNDLE = "community.yab-companion.alfred"
+BUNDLE = "community.yab-tabs.alfred"
 VERSION = Path(__file__).with_name("VERSION").read_text().strip()
 CACHE_TTL = 2
 
@@ -48,7 +48,7 @@ class MCP:
         self.sequence = 0
         try:
             self.rpc("initialize", {"protocolVersion": "2024-11-05", "capabilities": {},
-                     "clientInfo": {"name": "alfred-yab-companion", "version": VERSION}})
+                     "clientInfo": {"name": "yab-tabs-for-alfred", "version": VERSION}})
             self.send({"jsonrpc": "2.0", "method": "notifications/initialized"})
         except Exception:
             self.__exit__(None, None, None)

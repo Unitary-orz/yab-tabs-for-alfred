@@ -29,4 +29,4 @@ jobs:
       - name: Build workflow
         run: python scripts/build.py
       - name: Check committed package is current
-        run: git diff --exit-code -- 'Yab Companion.alfredworkflow'
+        run: git diff --exit-code -- 'Yab Tabs for Alfred.alfredworkflow'

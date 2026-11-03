@@ -1,17 +1,17 @@
 <img src="assets/icon.png" width="80" alt="Yab 应用图标">
 
-# Yab Companion for Alfred
+# Yab Tabs for Alfred
 
 从 Alfred 搜索 Yab 标签、切换已有标签或空间，复制链接、标题或 Markdown 链接。
 
-[English](README.md) · [下载工作流](./Yab%20Companion.alfredworkflow?raw=true)
+[English](README.md) · [下载工作流](./Yab%20Tabs%20for%20Alfred.alfredworkflow?raw=true)
 
 ## 安装
 
 1. 安装 [Alfred 5 与 Powerpack](https://www.alfredapp.com/) 和 [Yab](https://yetanotherbrowser.com/)。
 2. 在 Yab → Settings → Developers 安装 `yab` 命令行工具，并在 Settings → AI → Agents 中允许 Agent 使用 Yab，使工作流能访问本机 MCP 接口。
 3. 准备 Python 3.9 或更新版本。启动脚本会检查常见的 Homebrew 和系统路径，也可以在工作流环境变量中通过 `PYTHON3` 指定解释器的完整路径。
-4. 下载上方的 **Yab Companion.alfredworkflow**，双击导入 Alfred。如果 GitHub 打开文件页，选择 **Download raw file**。
+4. 下载上方的 **Yab Tabs for Alfred.alfredworkflow**，双击导入 Alfred。如果 GitHub 打开文件页，选择 **Download raw file**。
 
 无需第三方 Python 依赖，不调用 AI 模型。已检查 Alfred 5.8.1 与 Yab 0.45.2 的兼容性；后续 Yab 接口变化可能需要更新适配。公开版的界面提示使用英文，搜索支持中文。
 
@@ -37,7 +37,7 @@ yt 安全报告
 
 空间结果位于标签结果之后。输入空间名称并回车，切换后再次输入 `yt` 搜索该空间的标签。复制操作仅适用于标签，不会自动粘贴。
 
-如需全局快捷键，在 Alfred Preferences 中设置工作流未绑定的 **Hotkey** 节点即可。External Trigger 的 bundle ID 为 `community.yab-companion.alfred`，trigger ID 为 `list_tabs`。
+如需全局快捷键，在 Alfred Preferences 中设置工作流未绑定的 **Hotkey** 节点即可。External Trigger 的 bundle ID 为 `community.yab-tabs.alfred`，trigger ID 为 `list_tabs`。
 
 ## 搜索范围
 
@@ -60,7 +60,7 @@ Yab 0.45.2 的相关接口只列出当前空间和共享标签，不包含其他
 
 工作流通过 Yab 的公开工具读取标签标题、网址、文件夹路径和空间名称，不读取浏览器数据库，不模拟浏览器按键。
 
-结果保存在 Alfred 工作流缓存目录中，两秒后重新读取；从终端运行时，默认目录为 `~/Library/Caches/community.yab-companion.alfred`。缓存文件创建时仅允许当前账户读写。缓存过期只影响复用，不会自动删除磁盘文件；成功执行切换操作后会清除缓存。复制内容也可能进入你使用的剪贴板管理器。
+结果保存在 Alfred 工作流缓存目录中，两秒后重新读取；从终端运行时，默认目录为 `~/Library/Caches/community.yab-tabs.alfred`。缓存文件创建时仅允许当前账户读写。缓存过期只影响复用，不会自动删除磁盘文件；成功执行切换操作后会清除缓存。复制内容也可能进入你使用的剪贴板管理器。
 
 工作流本身不向模型或外部服务发送浏览数据；Yab 和网页的正常网络活动独立于此。Alfred 调试器可能显示标签标题和网址，分享日志前请脱敏。
 
@@ -84,7 +84,7 @@ sh -n workflow/run.sh
 python3 scripts/build.py
 ```
 
-构建会在仓库根目录生成 `Yab Companion.alfredworkflow`。构建和离线测试只使用仓库文件及 Python 标准库，不需要安装 Alfred、Yab，也不需要网络。CI 检查离线测试和安装包与源码的一致性，不发布产物，不控制 macOS 应用。
+构建会在仓库根目录生成 `Yab Tabs for Alfred.alfredworkflow`。构建和离线测试只使用仓库文件及 Python 标准库，不需要安装 Alfred、Yab，也不需要网络。CI 检查离线测试和安装包与源码的一致性，不发布产物，不控制 macOS 应用。
 
 修改后请在 Alfred 中实测搜索、回车、各个复制修饰键和空间切换，再分享工作流。测试仅使用虚构示例数据。贡献说明见 [CONTRIBUTING.md](CONTRIBUTING.md)。
 

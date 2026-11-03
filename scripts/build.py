@@ -9,9 +9,9 @@ import zipfile
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "workflow"))
-from companion import BUNDLE, VERSION
+from yab_tabs import BUNDLE, VERSION
 
-PACKAGE_NAME = "Yab Companion.alfredworkflow"
+PACKAGE_NAME = "Yab Tabs for Alfred.alfredworkflow"
 
 
 def uid(name):
@@ -63,7 +63,7 @@ def metadata():
     }, 510, 350, 3, "⌥ URL · ⌘ title · ⇧ Markdown")
     node("error", "output.notification", {
         "lastpathcomponent": False, "onlyshowifquerypopulated": True,
-        "removeextension": False, "text": "{query}", "title": "Yab Companion",
+        "removeextension": False, "text": "{query}", "title": "Yab Tabs for Alfred",
     }, 750, 150, 1, "Only show action errors")
     edge("hotkey", "search")
     edge("search", "action")
@@ -72,9 +72,9 @@ def metadata():
     edge("action", "error")
     return {
         "bundleid": BUNDLE, "category": "Internet", "connections": connections,
-        "createdby": "Yab Companion contributors",
+        "createdby": "Yab Tabs for Alfred contributors",
         "description": "Search Yab tabs, switch spaces, and copy links and titles",
-        "disabled": False, "name": "Yab Companion", "objects": objects,
+        "disabled": False, "name": "Yab Tabs for Alfred", "objects": objects,
         "readme": (ROOT / "workflow/README.md").read_text(), "uidata": positions, "version": VERSION,
         "variables": {}, "variablesdontexport": ["YAB_CLI", "PYTHON3"],
     }
@@ -84,7 +84,7 @@ def build(output=None):
     output = Path(output) if output else ROOT / PACKAGE_NAME
     output.parent.mkdir(parents=True, exist_ok=True)
     files = {name: (ROOT / name).read_bytes() for name in ("LICENSE", "THIRD_PARTY_NOTICES.md")}
-    for name in ("companion.py", "run.sh", "VERSION", "README.md"):
+    for name in ("yab_tabs.py", "run.sh", "VERSION", "README.md"):
         files[name] = (ROOT / "workflow" / name).read_bytes()
     files["icon.png"] = (ROOT / "assets/icon.png").read_bytes()
     files["info.plist"] = plistlib.dumps(metadata(), sort_keys=True)

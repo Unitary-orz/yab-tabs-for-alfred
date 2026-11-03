@@ -1,4 +1,4 @@
-# Yab Companion
+# Yab Tabs for Alfred
 
 Type `yt` in Alfred to search the current Yab space and shared tabs. Search title, URL, folder path, or space name; Chinese and other Unicode text are supported.
 
